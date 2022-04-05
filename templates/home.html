@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="body_interface">
+    <div class="sorties_recentes">
+        <div class="sorties_recentes_title">
+            <div class="sorties_recentes_title_color_shape_yellow"></div>
+            <div class="sorties_recentes_title_text">Sorties Récentes</div>
+        </div>
+        
+        <div class="sorties_recentes_cards">
+            {% for manga in mangas_list %}
+            <div class="sorties_recentes_card">
+                <div class="sorties_recentes_cards_top">
+                    <img src="{{manga.cover}}" alt="cover_manga" >
+                    <div class="sorties_recentes_cards_top_label"> xx Chapters </div>
+                    <progress id="read_to_date" max="100" value="70"></progress>
+    
+                </div>
+                
+                <div class="sorties_recentes_cards_bottom">
+                    <div class="sorties_recentes_cards_bottom_manga">{{manga.name}}</div>
+                    <div class="sorties_recentes_cards_bottom_manga_chapter">{{manga.manga_chapters[-1].chapter_number}} | {{manga.manga_chapters[-1].chapter_name}}</div>
+    
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+        
+
+    </div>
+
+    <div class="sorties_a_jour">
+        <div class="sorties_a_jour_title">
+            <div class="sorties_a_jour_title_color_shape_green"></div>
+            <div class="sorties_a_jour_title_text">A jour dans la lecture</div>
+        </div>
+
+        <div class="sorties_a_jour_cards">
+            <div class="sorties_a_jour_cards_top">
+                <img src="{{url_for('static', filename='cover_onepiece.png')}}" alt="cover_manga" >
+                <progress class="full_read" max="100" value="100"></progress>
+
+            </div>
+            
+            <div class="sorties_a_jour_cards_bottom">
+                <div class="sorties_a_jour_cards_bottom_manga_name">Manga Name</div>
+                <div class="sorties_a_jour_cards_bottom_manga_chapter">Manga Chapter</div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+      
+
+</div>
+
+{% endblock %}

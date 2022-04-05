@@ -1,0 +1,537 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+*{
+    box-sizing: border-box;
+}
+
+.interface {
+    /* Home [V1] */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    height: 100vh;
+
+    background: #FFFFFF;
+
+}
+
+.navbar {
+    /* Navbar */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+
+    background: #FFFFFF;
+    box-shadow: inset 0px -1px 0px #ECEDF0;
+
+    flex-shrink: 1;
+
+}
+
+.navbar a{
+    text-decoration: none;
+}
+
+.navbar_logo{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+
+    position: static;
+    max-width: 100%;
+    max-height: 100%;
+
+    /* Inside auto layout */
+
+
+    margin: 0px 30px;
+}
+
+.title_nav{
+    /* Btn-navbar */
+    /* Auto layout */
+
+    padding: 6px 12px;
+
+    background: #FFFFFF;
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    margin: 0px 30px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+    color: #656565;
+    text-decoration: none;
+}
+
+.title_nav.active{
+    /* Btn-navbar */
+    /* Auto layout */
+
+    background: #F0F1F3;
+
+}
+
+.content{
+    flex-grow: 1;
+
+    background: #F9FAFE;
+}
+
+.body_interface{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    background: #F9FAFE;
+
+    /* Inside auto layout */
+
+    margin: 1px 0px;
+}
+
+.sorties_recentes{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 40px 0px;
+
+    position: static;
+    height: auto;
+    width: 100%;
+
+    /* Inside auto layout */
+
+    margin: 10px 0px;
+}
+
+.sorties_a_jour{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 40px 0px;
+
+    position: static;
+    height: auto;
+    width: 100%;
+
+    /* Inside auto layout */
+
+    margin: 10px 0px;
+}
+
+.sorties_recentes_title{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: auto;
+    height: 42px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 6px 0px;
+
+}
+
+.sorties_recentes_title_color_shape_yellow{
+    width: 25px;
+    height: 40px;
+
+
+    background: #FDCC00;
+    border-radius: 5px 5px 5px 1px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    margin: 0px 10px;
+    display: block;
+}
+
+.sorties_a_jour_title_color_shape_green{
+    /* Logo To Read */
+    position: static;
+    width: 25px;
+    height: 40px;
+
+
+    background: #7CDB62;
+    border-radius: 5px 1px 5px 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 10px;
+}
+
+.sorties_a_jour_title{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: auto;
+    height: 42px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 6px 0px;
+
+}
+
+.sorties_recentes_title_text{
+    /* Sorties récentes */
+
+    position: static;
+    width: auto;
+    height: auto;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    margin: 0px 10px;
+}
+
+.sorties_a_jour_title_text{
+    /* Sorties récentes */
+
+    position: static;
+    width: auto;
+    height: auto;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    margin: 0px 10px;
+}
+
+.sorties_recentes_cards{
+    position: static;
+    width: auto;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    /* Inside auto layout */
+
+}
+
+.sorties_recentes_card{
+    flex: none;
+
+    margin: 0px 10px;
+
+}
+
+.sorties_a_jour_cards{
+    position: static;
+    width: auto;
+    height: auto;
+
+    /* Inside auto layout */
+
+    margin: 0px 10px;
+}
+
+.sorties_recentes_cards_top{
+    /* Auto layout */
+    position:relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 140 px;
+    height: 220 px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    margin: 5px 0px;
+
+}
+
+.sorties_a_jour_cards_top{
+    /* Auto layout */
+    position:relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 140 px;
+    height: 220 px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    margin: 5px 0px;
+
+}
+
+.sorties_recentes_cards_top_label{
+    position:absolute;
+    top: 10px;
+    right: 10px;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+
+    background: #FDCC00;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: #000000;
+
+}
+
+
+progress {
+    position:absolute;
+    bottom: 0px;
+
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 100%;
+    height: 8px;
+}
+
+progress::-webkit-progress-value { 
+    background: #FDCC00;
+
+}
+
+progress[value="100"]::-webkit-progress-value{ 
+    background: #7CDB62;
+
+}
+
+
+progress[value]::-webkit-progress-bar {
+    background-color: transparent;
+    border-radius: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+
+.sorties_recentes_cards_bottom{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+.sorties_a_jour_cards_bottom{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+.sorties_recentes_cards_bottom_manga_name{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 5px 0px 3px 0px;
+}
+
+.sorties_a_jour_cards_bottom_manga_name{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 5px 0px 3px 0px;
+}
+
+
+.sorties_recentes_cards_bottom_manga_chapter{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 5px 0px;
+}
+
+.sorties_a_jour_cards_bottom_manga_chapter{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 5px 0px;
+}
+
+
+
+
+.body_footer{
+    flex-shrink: 1;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    width: auto;
+    height: 36px;
+
+    background: #F9FAFE;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+
+    color: #000000;
+
+
+}
