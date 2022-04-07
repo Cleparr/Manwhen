@@ -7,22 +7,40 @@
         <div class="sorties_recentes_title">
             <div class="sorties_recentes_title_color_shape_yellow"></div>
             <div class="sorties_recentes_title_text">Sorties Récentes</div>
+            <a href="{{ url_for('add_follow') }}" id="add_button">
+                <div class="add_manga">
+                    <div class="add_manga_logo">
+                        <img src="{{url_for('static', filename='add_button.png')}}" alt="add_button.png">
+                    </div>
+                    <div class="add_manga_text">Add Manga/Manwha</div>
+                </div>
+            </a>
         </div>
         
         <div class="sorties_recentes_cards">
             {% for manga in mangas_list %}
             <div class="sorties_recentes_card">
-                <div class="sorties_recentes_cards_top">
-                    <img src="{{manga.cover}}" alt="cover_manga" >
-                    <div class="sorties_recentes_cards_top_label"> xx Chapters </div>
-                    <progress id="read_to_date" max="100" value="70"></progress>
-    
-                </div>
-                
-                <div class="sorties_recentes_cards_bottom">
-                    <div class="sorties_recentes_cards_bottom_manga">{{manga.name}}</div>
-                    <div class="sorties_recentes_cards_bottom_manga_chapter">{{manga.manga_chapters[-1].chapter_number}} | {{manga.manga_chapters[-1].chapter_name}}</div>
-    
+                <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
+                    <div class="sorties_recentes_card_top">
+                        <img src="{{manga.cover}}" alt="cover_manga" >
+                        <div class="sorties_recentes_card_top_label"> xx Chapters </div>
+                        <progress id="read_to_date" max="100" value="70"></progress>
+                    
+                    </div>
+                </a>
+
+                <div class="sorties_recentes_card_bottom">
+                    <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
+                        <div class="sorties_recentes_card_bottom_manga">{{manga.name}}</div>
+                    </a>
+                    {% if manga.manga_chapters|length > 0 %}
+                    <a href= {{manga.manga_chapters[0].chapter_url}} >
+                        <div class="sorties_recentes_card_bottom_manga_chapter">{{manga.manga_chapters[0].chapter_number}} | {{manga.manga_chapters[0].chapter_name}}</div>
+                    </a>
+                    {% else %}
+                    <div class="sorties_recentes_card_bottom_manga_chapter">Non publié</div>
+
+                    {% endif %}
                 </div>
 
 
@@ -41,16 +59,16 @@
             <div class="sorties_a_jour_title_text">A jour dans la lecture</div>
         </div>
 
-        <div class="sorties_a_jour_cards">
-            <div class="sorties_a_jour_cards_top">
+        <div class="sorties_a_jour_card">
+            <div class="sorties_a_jour_card_top">
                 <img src="{{url_for('static', filename='cover_onepiece.png')}}" alt="cover_manga" >
                 <progress class="full_read" max="100" value="100"></progress>
 
             </div>
             
-            <div class="sorties_a_jour_cards_bottom">
-                <div class="sorties_a_jour_cards_bottom_manga_name">Manga Name</div>
-                <div class="sorties_a_jour_cards_bottom_manga_chapter">Manga Chapter</div>
+            <div class="sorties_a_jour_card_bottom">
+                <div class="sorties_a_jour_card_bottom_manga">Manga Name</div>
+                <div class="sorties_a_jour_card_bottom_manga_chapter">Manga Chapter</div>
 
             </div>
 

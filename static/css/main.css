@@ -5,6 +5,44 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration:none;
+}
+
+a[id="add_button"]{
+    order:2;
+}
+
+img[alt="cover_manga"]{
+    width:210px;
+    height:300px;
+}
+
+img[alt="squared_cover_manga"]{
+    width:40px;
+    height:40px;
+    border-radius: 5px;
+    object-fit: cover;
+
+}
+
+img[alt="add_button"]{
+    width:20px;
+    height:20px;
+
+}
+
+img[alt="logo_eye"]{
+
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    margin: 0px 10px;
+}
+
+/* Base */
+
 .interface {
     /* Home [V1] */
     /* Auto layout */
@@ -95,6 +133,9 @@
 
     background: #F9FAFE;
 }
+
+/* Block Content */
+/* Home.html */ 
 
 .body_interface{
     /* Auto layout */
@@ -271,26 +312,79 @@
     margin: 0px 10px;
 }
 
-.sorties_recentes_cards{
-    position: static;
-    width: auto;
-    height: auto;
-
+.add_manga{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding: 8px 10px;
+
+    height: 30px;
+
+    background: #FFFFFF;
+    border: 1.33333px solid #EAEAEF;
+    box-sizing: border-box;
+    border-radius: 15px;
 
     /* Inside auto layout */
 
-}
-
-.sorties_recentes_card{
     flex: none;
-
-    margin: 0px 10px;
-
+    margin: 0px 20px;
 }
+
+.add_manga_logo{
+    /* Inside auto layout */
+
+    height:16px;
+    width:16px;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    order: 0;
+    margin: 0px;
+}
+
+.add_manga_text{
+    position: static;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+
+
+    color: #161628;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 7px;
+}
+
+
+
+.sorties_recentes_cards{
+
+    display: grid;
+    /* Là je mets 210px car la taille des images fait 210px. Je sais pas comment faire autrement pour le moment */
+
+    grid-template-columns: repeat(5, 210px);
+    align-items: center;
+    padding: 0px;
+    width: 100%;
+
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+    margin: 0px 0px 0px 10px;
+}
+
+
 
 .sorties_a_jour_cards{
     position: static;
@@ -302,7 +396,29 @@
     margin: 0px 10px;
 }
 
-.sorties_recentes_cards_top{
+.sorties_recentes_card_top{
+    /* Auto layout */
+    position:relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width:auto;
+    height:auto;
+
+    background: #FFFFFF;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    margin: 5px 0px;
+
+}
+
+.sorties_a_jour_card_top{
     /* Auto layout */
     position:relative;
 
@@ -324,29 +440,7 @@
 
 }
 
-.sorties_a_jour_cards_top{
-    /* Auto layout */
-    position:relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    width: 140 px;
-    height: 220 px;
-
-    background: #FFFFFF;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    margin: 5px 0px;
-
-}
-
-.sorties_recentes_cards_top_label{
+.sorties_recentes_card_top_label{
     position:absolute;
     top: 10px;
     right: 10px;
@@ -405,7 +499,7 @@ progress[value]::-webkit-progress-bar {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
   }
 
-.sorties_recentes_cards_bottom{
+.sorties_recentes_card_bottom{
     /* Auto layout */
 
     display: flex;
@@ -420,7 +514,7 @@ progress[value]::-webkit-progress-bar {
 
 }
 
-.sorties_a_jour_cards_bottom{
+.sorties_a_jour_card_bottom{
     /* Auto layout */
 
     display: flex;
@@ -435,7 +529,7 @@ progress[value]::-webkit-progress-bar {
 
 }
 
-.sorties_recentes_cards_bottom_manga_name{
+.sorties_recentes_card_bottom_manga{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
@@ -453,7 +547,7 @@ progress[value]::-webkit-progress-bar {
     margin: 5px 0px 3px 0px;
 }
 
-.sorties_a_jour_cards_bottom_manga_name{
+.sorties_a_jour_card_bottom_manga{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
@@ -472,7 +566,7 @@ progress[value]::-webkit-progress-bar {
 }
 
 
-.sorties_recentes_cards_bottom_manga_chapter{
+.sorties_recentes_card_bottom_manga_chapter{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -490,7 +584,7 @@ progress[value]::-webkit-progress-bar {
     margin: 5px 0px;
 }
 
-.sorties_a_jour_cards_bottom_manga_chapter{
+.sorties_a_jour_card_bottom_manga_chapter{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -509,6 +603,526 @@ progress[value]::-webkit-progress-bar {
 }
 
 
+/*Page Manga.html */ 
+
+.last_chapters{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 10px 20px 40px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    align-self: stretch;
+    margin: 0px 10px;
+}
+
+.last_chapters_top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    margin: 10px 0px;
+}
+
+.last_chapters_top_text{
+    /* Sorties récentes */
+
+    position: static;
+    width: auto;
+    height: auto;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    margin: 0px 10px;
+}
+
+.last_chapters_bottom{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 10px 10px 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    margin: 10px 0px;
+}
+
+.chapter_card{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 500px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(112, 144, 176, 0.25);
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    flex-grow: 0;
+    margin: 0px 0px 10px 0px;
+
+}
+
+.chapter_card_left{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.chapter_card_left_squared_cover{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.chapter_card_left_text{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px 0px 0px 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.chapter_card_left_text_manga{
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #000000;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 4px 0px;
+}
+
+.chapter_card_left_text_chapter_name{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 4px 0px;
+}
+
+
+.chapter_card_right{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    margin: 0px 0px 0px 5px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* add_follow.html */
+.new_abo_form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 10px 20px 40px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    align-self: stretch;
+    margin: 0px 10px;
+}
+
+.new_abo_form_top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    margin: 10px 0px;
+}
+
+.new_abo_form_top_text{
+    /* Sorties récentes */
+
+    position: static;
+    width: auto;
+    height: auto;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    margin: 0px 10px;
+}
+
+.new_abo_form_bottom{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 10px 10px 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    margin: 10px 0px;
+}
+
+
+.new_abo_bottom_fields{
+    /* new_abo_bottom_fields */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+}
+
+.new_abo_bottom_field{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 16px 40px rgba(112, 144, 176, 0.2);
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    margin: 20px 0px;
+}
+
+.new_abo_bottom_field_input_title{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 15px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+}
+
+.new_abo_bottom_field_input_title_logo{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 29px;
+    height: 29px;
+
+    background: #DEE9FE;
+    border-radius: 45px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.new_abo_bottom_field_input_title_text{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #2C317B;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 10px;
+}
+
+.new_abo_bottom_field_user_inputs{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 15px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+}
+
+.new_abo_bottom_field_user_inputs_group{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /* Inside auto layout */
+
+    flex: none;
+    align-self: stretch;
+    margin: 10px 0px;
+}
+
+.new_abo_bottom_field_user_inputs_group_text{
+    /* input_app_depart */
+
+    position: static;
+    height: 16px;
+    left: 0px;
+    top: 0px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #2C317B;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 4px 0px;
+}
+
+.input{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 7px 8px;
+
+    position: static;
+    width:400px;
+    height: 33px;
+
+
+    border: 1px solid #D8D8DA;
+    box-sizing: border-box;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    margin: 4px 0px;
+}
+
+.inputs_buttons{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 15px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+}
+
+.inputs_buttons button[value="reset"]{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px 10px;
+
+    border: 1px solid #2C317B;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    background-color: #FFFFFF;
+    color: #2C317B;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    margin: 0px 10px;
+}
+
+.inputs_buttons button[value="ajout"]{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px 10px;
+
+    background: #2C317B;
+    border: 1px solid #2C317B;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+    
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 10px;
+}
 
 
 .body_footer{

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="body_interface">
+    <div class="new_abo_form">
+        <div class="new_abo_form_top">
+            <img src="{{url_for('static', filename='logo_manwhen.png')}}" alt="logo_manwhen">
+            <div class="new_abo_form_top_text">Ajouter un abonnement</div>
+
+        </div>
+
+        <div class="new_abo_bottom">
+            <div class="new_abo_bottom_fields">
+                <div class="new_abo_bottom_field">
+                    <form method="POST">
+                    <div class="new_abo_bottom_field_input_title">
+                        <div class="new_abo_bottom_field_input_title_logo">
+
+                        </div>
+                        <div class="new_abo_bottom_field_input_title_text">Votre nouvel abonnement</div>
+                    </div>
+
+                    <div class="new_abo_bottom_field_user_inputs">
+                        <div class="new_abo_bottom_field_user_inputs_group">
+                            <div class="new_abo_bottom_field_user_inputs_group_text">Nom du Manga</div>
+                            <input type="text" id="input_manga_name" name="manga_name" value= "{{input_manga_name}}" required/>
+                        </div>
+                        <div class="new_abo_bottom_field_user_inputs_group">
+                            <div class="new_abo_bottom_field_user_inputs_group_text">URL de lecture de l'oeuvre</div>
+                            <input type="url" id="input_manga_url" name="manga_url"value= "{{input_manga_url}}" required/>
+                        </div>
+                        <div class="new_abo_bottom_field_user_inputs_group">
+                            <div class="new_abo_bottom_field_user_inputs_group_text">Cover (lien URL)</div>
+                            <input type="url" id="input_manga_cover_url" name="manga_cover_url" value= "{{input_manga_cover_url}}" required/>
+                        </div>
+
+                    </div>
+
+                    <div class="inputs_buttons">
+                        <button type="reset" name="form" value="reset">Re-initialiser</button>
+                        <button type="submit" name="form" value="ajout">Ajouter cet abonnement</button>
+
+                    </div>
+
+                    </form>
+
+
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

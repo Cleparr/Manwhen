@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="body_interface">
+    <div class="last_chapters">
+        <div class="last_chapters_top">
+            <img src="{{url_for('static', filename='logo_manwhen.png')}}" alt="logo_manwhen">
+            <div class="last_chapters_top_text">Les derniers Chapitres</div>
+
+        </div>
+
+        <div class="last_chapters_bottom">
+            {% for chapter in manga.manga_chapters %}
+            <a href= {{chapter.chapter_url}} >
+                <div class="chapter_card">
+                    <div class="chapter_card_left">
+                        <div class="chapter_card_left_squared_cover">
+                            <img src="{{manga.cover}}" alt="squared_cover_manga">
+
+                        </div>
+                        <div class="chapter_card_left_text">
+                            <div class="chapter_card_left_text_manga">{{manga.name}}  </div>
+                            <div class="chapter_card_left_text_chapter_name">{{chapter.chapter_number}} | {{chapter.chapter_name}}</div>
+                        </div>
+
+                    </div>
+                    <div class="chapter_card_right">
+                        <img src="{{url_for('static', filename='grey_eye.png')}}" alt="logo_eye">
+                        
+                    </div>
+
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
