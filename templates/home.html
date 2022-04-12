@@ -23,8 +23,8 @@
                 <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
                     <div class="sorties_recentes_card_top">
                         <img src="{{manga.cover}}" alt="cover_manga" >
-                        <div class="sorties_recentes_card_top_label"> xx Chapters </div>
-                        <progress id="read_to_date" max="100" value="70"></progress>
+                        <div class="sorties_recentes_card_top_label"> {{count_false[loop.index0]}} Chapters </div>
+                        <progress id="read_to_date" max="100" value="{{(100*count_true[loop.index0])/(count_false[loop.index0]+count_true[loop.index0])|round|int}}"></progress>
                     
                     </div>
                 </a>

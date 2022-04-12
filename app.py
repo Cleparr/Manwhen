@@ -49,11 +49,22 @@ def home():
     rule = str(request.url_rule)
 
     mangas_list = Manga.query.all()
-    
+
+
+    true_count_list = []
+    false_count_list = []
+    for i in range(1,len(mangas_list)+1):
+        true_count_list.append(len(MangaChapter.query.filter( MangaChapter.chapter_viewed == True , MangaChapter.manga_id== str(i)).all()))
+        false_count_list.append(len(MangaChapter.query.filter( MangaChapter.chapter_viewed == False , MangaChapter.manga_id== str(i)).all()))
+
+    echo(true_count_list)
+    echo(false_count_list)
 
     return render_template('home.html',
                            rule=rule,
-                           mangas_list=mangas_list)
+                           mangas_list=mangas_list,
+                           count_true = true_count_list,
+                           count_false = false_count_list)
 
 
 @app.route("/abo")
