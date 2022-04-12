@@ -9,6 +9,11 @@ a{
     text-decoration:none;
 }
 
+a[id='chapter_card_hyperlink']{
+    width: 100%;
+}
+
+
 a[id="add_button"]{
     order:2;
 }
@@ -38,8 +43,18 @@ img[alt="logo_eye"]{
     
     flex: none;
     order: 0;
-    margin: 0px 10px;
+    margin: 5px;
 }
+
+
+form[id="eye"]{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
 
 /* Base */
 
@@ -791,7 +806,11 @@ progress[value]::-webkit-progress-bar {
 
     margin: 0px 0px 0px 5px;
 
-
+    background: white;
+    stroke:none;
+    border-color: white;
+    color:white;
+    border-width:0px;
     /* Inside auto layout */
 
     flex: none;

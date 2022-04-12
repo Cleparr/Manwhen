@@ -35,7 +35,7 @@
                     </a>
                     {% if manga.manga_chapters|length > 0 %}
                     <a href= {{manga.manga_chapters[0].chapter_url}} >
-                        <div class="sorties_recentes_card_bottom_manga_chapter">{{manga.manga_chapters[0].chapter_number}} | {{manga.manga_chapters[0].chapter_name}}</div>
+                        <div class="sorties_recentes_card_bottom_manga_chapter">{{manga.manga_chapters[0].chapter_number|round|int}} | {{manga.manga_chapters[0].chapter_name}}</div>
                     </a>
                     {% else %}
                     <div class="sorties_recentes_card_bottom_manga_chapter">Non publié</div>

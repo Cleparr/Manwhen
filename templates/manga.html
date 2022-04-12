@@ -12,7 +12,7 @@
 
         <div class="last_chapters_bottom">
             {% for chapter in manga.manga_chapters %}
-            <a href= {{chapter.chapter_url}} >
+            <a href= {{chapter.chapter_url}} id="chapter_card_hyperlink">
                 <div class="chapter_card">
                     <div class="chapter_card_left">
                         <div class="chapter_card_left_squared_cover">
@@ -21,17 +21,24 @@
                         </div>
                         <div class="chapter_card_left_text">
                             <div class="chapter_card_left_text_manga">{{manga.name}}  </div>
-                            <div class="chapter_card_left_text_chapter_name">{{chapter.chapter_number}} | {{chapter.chapter_name}}</div>
+                            <div class="chapter_card_left_text_chapter_name">{{chapter.chapter_number|round|int}} | {{chapter.chapter_name}}</div>
                         </div>
 
                     </div>
-                    <div class="chapter_card_right">
-                        <img src="{{url_for('static', filename='grey_eye.png')}}" alt="logo_eye">
-                        
-                    </div>
+            </a>
+                    <form method="POST" action="/manga/read" id="eye">
+                        <button class="chapter_card_right" type="submit" name="clic" value="{{chapter.id}}">
+                            {% if chapter.chapter_viewed %}
+                            <img src="{{url_for('static', filename='green_eye.png')}}" alt="logo_eye">
+                            {% else %}
+                            <img src="{{url_for('static', filename='grey_eye.png')}}" alt="logo_eye">
+                            {% endif %}
+                            
+                        </button>
+                    </form>
 
                 </div>
-            </a>
+            
             {% endfor %}
 
         </div>
