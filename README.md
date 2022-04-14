@@ -1,3 +1,6 @@
+<img src="https://badgen.net/badge/python/3.10.2/blue">
+<img src="https://badgen.net/github/stars/Cleparr/Manwhen">
+
 # Projet Manwhen - Setup
 
 Projet basé sur l'idée d'un TV Time pour les sorties de manga / manwha
