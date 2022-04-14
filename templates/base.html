@@ -18,9 +18,12 @@
     <body>
       <div class="interface">
         <div class="navbar">
-          <div class="navbar_logo">
-            <img src="{{url_for('static', filename='logo_manwhen.png')}}" alt="logo_manwhen">
-          </div>
+          <a href="{{ url_for('home') }}">
+
+            <div class="navbar_logo">
+              <img src="{{url_for('static', filename='logo_manwhen.png')}}" alt="logo_manwhen">
+            </div>
+          </a>
           
           <a href="{{ url_for('home') }}" class="title_nav {{ 'active' if rule == '/' }}"> Accueil </a>
 

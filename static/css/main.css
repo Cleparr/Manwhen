@@ -388,7 +388,7 @@ form[id="eye"]{
     display: grid;
     /* Là je mets 210px car la taille des images fait 210px. Je sais pas comment faire autrement pour le moment */
 
-    grid-template-columns: repeat(5, 210px);
+    grid-template-columns: repeat(6, 210px);
     align-items: center;
     padding: 0px;
     width: 100%;
@@ -402,14 +402,21 @@ form[id="eye"]{
 
 
 .sorties_a_jour_cards{
-    position: static;
-    width: auto;
-    height: auto;
+    display: grid;
+    /* Là je mets 210px car la taille des images fait 210px. Je sais pas comment faire autrement pour le moment */
 
-    /* Inside auto layout */
+    grid-template-columns: repeat(6, 210px);
+    align-items: center;
+    padding: 0px;
+    width: 100%;
 
-    margin: 0px 10px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+    margin: 0px 0px 0px 10px;
 }
+
+
 
 .sorties_recentes_card_top{
     /* Auto layout */
