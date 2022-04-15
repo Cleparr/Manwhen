@@ -25,3 +25,16 @@ python -m pip install requests
 
 python -m pip install tldextract
 
+## To do List 
+
+- [x] Permettre de marquer comme lu un chapitre
+- [x] Filtrer si lecture à jour 
+- [x] Ajouter plusieurs fonctions de collecte de l'information
+- [ ] Préciser en label sur chaque card si Manwha, Manga, .. 
+- [ ] Mettre en forme la page "Mes abonnements
+- [ ] Permettre de supprimer une oeuvre en base (dans onglet "Mes abonnements")
+- [ ] Ajouter des messages d'erreurs lors de mauvais ajouts
+- [ ] Indiquer les langues de lecture
+- [ ] Permettre de trier l'ordre (A-Z) / (# de chapitre à lire)
+- [ ] Faire une section S-Tier
+ 

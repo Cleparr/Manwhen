@@ -32,7 +32,7 @@
 
                     <div class="sorties_recentes_card_bottom">
                         <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
-                            <div class="sorties_recentes_card_bottom_manga">{{manga.name}}</div>
+                            <div class="sorties_recentes_card_bottom_manga">{{manga.name|truncate(30) }}</div>
                         </a>
                         {% if manga.manga_chapters|length > 0 %}
                         <a href= {{manga.manga_chapters[0].chapter_url}} >
@@ -75,7 +75,7 @@
 
                     <div class="sorties_a_jour_card_bottom">
                         <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
-                            <div class="sorties_a_jour_card_bottom_manga">{{manga.name}}</div>
+                            <div class="sorties_a_jour_card_bottom_manga">{{manga.name|truncate(30) }}</div>
                         </a>
                         {% if manga.manga_chapters|length > 0 %}
                         <a href= {{manga.manga_chapters[0].chapter_url}} >

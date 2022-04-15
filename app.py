@@ -7,6 +7,7 @@ from sqlalchemy.orm import relationship
 import requests
 from urllib.parse import urlparse
 import tldextract
+from bs4 import BeautifulSoup
 
 
 app = Flask(__name__)
@@ -42,6 +43,80 @@ class MangaChapter(db.Model):
 
     def __repr__(self):
         return f"manga_chapter('{self.chapter_name}','{self.chapter_number}','{self.chapter_url}','{self.chapter_viewed}')"
+
+
+# Fonction de scrapping pour le domaine scan-vf
+def scan_vf_scrap():
+    #Je séléctionne le dernier manga ajouté
+    manga = Manga.query.order_by(Manga.id.desc()).first()
+
+    html_text = requests.get(manga.url).text
+    soup = BeautifulSoup(html_text, 'html.parser')
+
+    #Je vais chercher les informations sur la page du manga en question
+    online_chapters = soup.find_all('h5', {'class' : 'chapter-title-rtl'} )
+
+    #Je cherche toutes les info (name, url, title)
+    for num_chap in range(len(online_chapters)):
+
+        last_chap_url = online_chapters[num_chap].find('a')['href']
+        last_chap_title = online_chapters[num_chap].find('em').getText()
+
+        last_chap_number_process = online_chapters[num_chap].find('a').getText()
+        last_chap_number_process = last_chap_number_process.split()
+        last_chap_number = last_chap_number_process[len(last_chap_number_process)-1]
+
+        state = MangaChapter.query.filter_by(chapter_number=last_chap_number, manga_id = manga.id).first()
+
+        if state is None :
+            var = MangaChapter(chapter_number = last_chap_number,
+                    chapter_url = last_chap_url, 
+                    chapter_name = last_chap_title, 
+                    manga = manga)
+            db.session.add(var)
+            
+
+    db.session.commit()
+
+def manga1st_scrap():
+     #Je séléctionne le dernier manga ajouté
+    manga = Manga.query.order_by(Manga.id.desc()).first()
+
+    # J'itère sur tous les manga
+    html_text = requests.get(manga.url).text
+    soup = BeautifulSoup(html_text, 'html.parser')
+
+    #Je vais chercher les informations sur la page du manga en question
+    online_chapters = soup.find_all('li', {'class' : 'wp-manga-chapter'} )
+    
+    #Je cherche toutes les info (name, url, title)
+    for num_chap in range(len(online_chapters)):
+        last_chap_url = online_chapters[num_chap].find('a')['href']
+        #Il n'y a pas le titre donc je prends "Chapitre x"
+        last_chap_title = online_chapters[num_chap].find('a').getText()
+
+        last_chap_number_process = online_chapters[num_chap].find('a').getText()
+        last_chap_number_process = last_chap_number_process.split()
+        last_chap_number = last_chap_number_process[len(last_chap_number_process)-1]
+
+        state = MangaChapter.query.filter_by(chapter_number=last_chap_number, manga_id = manga.id).first()
+        
+        if state is None :
+            var = MangaChapter(chapter_number = last_chap_number,
+                    chapter_url = last_chap_url, 
+                    chapter_name = last_chap_title, 
+                    manga = manga)
+            db.session.add(var)
+            
+
+    db.session.commit()
+
+
+
+functions_scrap = {
+    "scan-vf": scan_vf_scrap,
+    "manga1st": manga1st_scrap
+}
 
 
 @app.route("/")
@@ -131,26 +206,36 @@ def add_follow():
     manga_cover_url = request.form['manga_cover_url']
 
     # Checker si le nom existe déjà en base
-    manga_name_check = db.session.query(Manga.id).filter_by(
-        name=manga_name).scalar() is not None
-
-    # Checker si l'url arrive bien sur une page que je connais : https://www.scan-vf.net/
-
-    domain_url = tldextract.extract(manga_url_lecture)
-
-    echo(domain_url.domain)
-
-    if domain_url.domain != 'scan-vf':
+    manga_name_check = db.session.query(Manga.id).filter_by(name=manga_name).scalar() is not None
+    
+    if manga_name_check == True:
+        #Je pourrais ajouter ici un message d'erreur
+        echo('Le manga est déjà en base')
         return redirect("/add")
 
-    manga_to_add = Manga(name=manga_name,
+
+    # Checker si l'url arrive bien sur un domain dont j'ai une fonction de scrapping 
+    domain_url = tldextract.extract(manga_url_lecture)
+
+    if domain_url.domain in functions_scrap:
+        #Déjà j'ajoute le manga 
+        manga_to_add = Manga(name=manga_name,
                          url=manga_url_lecture,
                          cover=manga_cover_url)
 
-    db.session.add(manga_to_add)
+        db.session.add(manga_to_add)
+        db.session.commit()
 
-    db.session.commit()
+        #Ensuite j'ajoute les chapitres via l'appel de fonction dans le dict de fonction de scrapping
+        functions_scrap[domain_url.domain]()
 
-    # Retourner un message visuel que c'est ajouté en base // Qu'il y a eu une erreur (la spécifier)
+        # Retourner un message visuel que c'est ajouté en base // Qu'il y a eu une erreur (la spécifier)
 
-    return redirect("/")
+        return redirect("/")
+
+    else :  
+        #Je pourrais ajouter ici un message d'erreur
+        echo('Le domaine ne fait pas partie de ceux en base')
+        return redirect("/add")
+
+    
