@@ -57,6 +57,10 @@ img[alt="logo_eye"]{
     margin: 5px;
 }
 
+img[alt="logo_logout"]{
+    margin:0px 0px 0px 10px;
+}
+
 
 form[id="eye"]{
     display: flex;
@@ -152,6 +156,18 @@ form[id="eye"]{
 
     background: #F0F1F3;
 
+}
+
+
+.title_nav[id="logout"]{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #656565;
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .content{

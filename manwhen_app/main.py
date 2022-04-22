@@ -2,6 +2,7 @@
 
 from click import echo
 from flask import Blueprint, render_template, url_for, redirect, request
+from flask_login import login_required, current_user, login_manager
 import tldextract
 from . import db
 from .models import Manga, MangaChapter, User
@@ -10,6 +11,7 @@ from .scrap_functions import functions_scrap
 main = Blueprint('main', __name__)
 
 @main.route("/")
+@login_required
 def home():
     rule = str(request.url_rule)
 
@@ -34,6 +36,7 @@ def home():
 
 
 @main.route("/abo")
+@login_required
 def mylist_abo():
     rule = str(request.url_rule)
 
@@ -42,6 +45,7 @@ def mylist_abo():
 
 
 @main.route("/manga/<manga_id>", methods=['GET'])
+@login_required
 def DynamicUrl(manga_id):
     rule = str(request.url_rule)
 
@@ -55,6 +59,7 @@ def DynamicUrl(manga_id):
 
 
 @main.route("/manga/read", methods=['POST'])
+@login_required
 def mark_chap_as_read():
 
     manga_chapter_view_clicked = int(request.form['clic'])
@@ -81,6 +86,7 @@ def mark_chap_as_read():
 
 
 @main.route("/add", methods=['GET'])
+@login_required
 def index():
     rule = str(request.url_rule)
 
@@ -89,6 +95,7 @@ def index():
 
 
 @main.route("/add", methods=['POST'])
+@login_required
 def add_follow():
     rule = str(request.url_rule)
 
@@ -128,3 +135,4 @@ def add_follow():
         #Je pourrais ajouter ici un message d'erreur
         echo('Le domaine ne fait pas partie de ceux en base')
         return redirect("/add")
+

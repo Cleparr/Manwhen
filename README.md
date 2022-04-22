@@ -1,4 +1,4 @@
-![alt text](https://github.com/Cleparr/Manwhen/static/web_interface.png?raw=true)
+![Image Interface web](/manwhen_app/static/web_interface.png)
 <img src="https://badgen.net/badge/python/3.10.2/blue">
 <img src="https://badgen.net/github/stars/Cleparr/Manwhen">
 
