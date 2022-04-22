@@ -18,18 +18,18 @@
     <body>
       <div class="interface">
         <div class="navbar">
-          <a href="{{ url_for('home') }}">
+          <a href="{{ url_for('main.home') }}">
 
             <div class="navbar_logo">
               <img src="{{url_for('static', filename='logo_manwhen.png')}}" alt="logo_manwhen">
             </div>
           </a>
           
-          <a href="{{ url_for('home') }}" class="title_nav {{ 'active' if rule == '/' }}"> Accueil </a>
+          <a href="{{ url_for('main.home') }}" class="title_nav {{ 'active' if rule == '/' }}"> Accueil </a>
 
-          <a href="{{ url_for('mylist_abo') }}" class="title_nav {{ 'active' if rule == '/abo' }}"> Mes abonnements </a>
+          <a href="{{ url_for('main.mylist_abo') }}" class="title_nav {{ 'active' if rule == '/abo' }}"> Mes abonnements </a>
 
-          <a href="{{ url_for('add_follow') }}" class="title_nav {{ 'active' if rule == '/add' }}"> Ajout abonnement </a>
+          <a href="{{ url_for('main.add_follow') }}" class="title_nav {{ 'active' if rule == '/add' }}"> Ajout abonnement </a>
 
         </div>
           

@@ -7,7 +7,7 @@
         <div class="sorties_recentes_title">
             <div class="sorties_recentes_title_color_shape_yellow"></div>
             <div class="sorties_recentes_title_text">Sorties Récentes</div>
-            <a href="{{ url_for('add_follow') }}" id="add_button">
+            <a href="{{ url_for('main.add_follow') }}" id="add_button">
                 <div class="add_manga">
                     <div class="add_manga_logo">
                         <img src="{{url_for('static', filename='add_button.png')}}" alt="add_button.png">
@@ -21,7 +21,7 @@
             {% for manga in mangas_list %}
                 {% if count_false[loop.index0] != 0 %}
                 <div class="sorties_recentes_card">
-                    <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
+                    <a href="{{ url_for('main.DynamicUrl', manga_id = manga.id) }}">
                         <div class="sorties_recentes_card_top">
                             <img src="{{manga.cover}}" alt="cover_manga" >
                             <div class="sorties_recentes_card_top_label"> {{count_false[loop.index0]}} Chapters </div>
@@ -31,7 +31,7 @@
                     </a>
 
                     <div class="sorties_recentes_card_bottom">
-                        <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
+                        <a href="{{ url_for('main.DynamicUrl', manga_id = manga.id) }}">
                             <div class="sorties_recentes_card_bottom_manga">{{manga.name|truncate(30) }}</div>
                         </a>
                         {% if manga.manga_chapters|length > 0 %}
@@ -65,7 +65,7 @@
             {% for manga in mangas_list %}
                 {% if count_false[loop.index0] == 0 %}
                 <div class="sorties_a_jour_card">
-                    <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
+                    <a href="{{ url_for('main.DynamicUrl', manga_id = manga.id) }}">
                         <div class="sorties_a_jour_card_top">
                             <img src="{{manga.cover}}" alt="cover_manga" >
                             <progress id="full_read" max="100" value="100"></progress>
@@ -74,7 +74,7 @@
                     </a>
 
                     <div class="sorties_a_jour_card_bottom">
-                        <a href="{{ url_for('DynamicUrl', manga_id = manga.id) }}">
+                        <a href="{{ url_for('main.DynamicUrl', manga_id = manga.id) }}">
                             <div class="sorties_a_jour_card_bottom_manga">{{manga.name|truncate(30) }}</div>
                         </a>
                         {% if manga.manga_chapters|length > 0 %}

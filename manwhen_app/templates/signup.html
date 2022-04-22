@@ -22,7 +22,7 @@
                     {% if messages %}
                         <div class="notif_invalid">
                             {{ messages[0] }}. 
-                            <a href="{{ url_for('login') }}" id = "notif_invalid_email">Se connecter.</a>
+                            <a href="{{ url_for('auth.login') }}" id = "notif_invalid_email">Se connecter.</a>
                         </div>
                     {% endif %}
                 {% endwith %}

@@ -32,6 +32,8 @@ python -m pip install python-dotenv
 - [x] Permettre de marquer comme lu un chapitre
 - [x] Filtrer si lecture à jour 
 - [x] Ajouter plusieurs fonctions de collecte de l'information
+- [x] Refondre la structure du projet
+- [x] Ajouter un login/signup
 - [ ] Préciser en label sur chaque card si Manwha, Manga, .. 
 - [ ] Mettre en forme la page "Mes abonnements
 - [ ] Permettre de supprimer une oeuvre en base (dans onglet "Mes abonnements")
