@@ -1,17 +1,27 @@
 from enum import unique
 from unicodedata import name
 from click import echo
-from flask import Flask, render_template_string, request, render_template, url_for, redirect
+from flask import Flask, render_template_string, request, render_template, url_for, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 import requests
 from urllib.parse import urlparse
 import tldextract
 from bs4 import BeautifulSoup
+from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+import os
+from flask_login import UserMixin, LoginManager
+
+load_dotenv()
 
 
+
+#Create App
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET_KEY')
+
 db = SQLAlchemy(app)
 
 
@@ -33,8 +43,8 @@ class Manga(db.Model):
 
 class MangaChapter(db.Model):
     __tablename__ = 'manga_chapter'
-    id = db.Column(db.Integer, primary_key=True)
-    manga_id = db.Column(db.Integer, db.ForeignKey('manga.id'))
+    id = db.Column(db.Integer, primary_key=True, index = True)
+    manga_id = db.Column(db.Integer, db.ForeignKey('manga.id'), index = True)
     chapter_number = db.Column(db.Numeric, nullable=False)
 
     chapter_name = db.Column(db.String(100), nullable=False)
@@ -44,6 +54,14 @@ class MangaChapter(db.Model):
     def __repr__(self):
         return f"manga_chapter('{self.chapter_name}','{self.chapter_number}','{self.chapter_url}','{self.chapter_viewed}')"
 
+class User(UserMixin,db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+    password = db.Column(db.String(120), nullable=False)
+
+    def __repr__(self):
+        return f"user('{self.email}','{self.password}')"
 
 # Fonction de scrapping pour le domaine scan-vf
 def scan_vf_scrap():
@@ -239,3 +257,57 @@ def add_follow():
         return redirect("/add")
 
     
+@app.route("/login", methods=['GET'])
+def login():
+
+    return render_template('login.html')
+
+@app.route("/login", methods=['POST'])
+def login_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    remember = True if request.form.get('remember') else False
+
+    user = User.query.filter_by(email=email).first()
+
+    # check if the user actually exists
+    # take the user-supplied password, hash it, and compare it to the hashed password in the database
+    if not user or not check_password_hash(user.password, password):
+        flash('Votre mot de passe ou adresse mail est invalide.')
+        return redirect(url_for('login')) # if the user doesn't exist or password is wrong, reload the page
+
+    # if the above check passes, then we know the user has the right credentials
+
+    return render_template(url_for('/'))
+
+
+@app.route("/signup", methods=['GET'])
+def signup():
+
+    return render_template('signup.html')
+
+
+@app.route("/signup", methods=['POST'])
+def signup_post():
+
+    email = request.form['email']
+    password = request.form['password']
+
+    echo(email)
+    echo(password)
+
+    user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+
+    if user: # if a user is found, we want to redirect back to signup page so user can try again
+        flash('Cette adresse mail existe déjà')
+        return redirect(url_for('signup')) # si la route s'appelait @auth.route => Je mettrais auth.signup. Ca permet de ne pas à avoir à MAJ la route si je la modifie
+    
+    new_user = User(email=email, password=generate_password_hash(password, method='sha256'))
+
+    # add the new user to the database
+    db.session.add(new_user)
+    db.session.commit()
+
+    return redirect(url_for('login'))
+
+

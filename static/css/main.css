@@ -13,6 +13,17 @@ a[id='chapter_card_hyperlink']{
     width: 100%;
 }
 
+a[id='notif_invalid_email']{
+    
+    text-decoration:underline;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
 
 a[id="add_button"]{
     order:2;
@@ -1161,7 +1172,7 @@ progress[value]::-webkit-progress-bar {
     padding: 10px;
 
     width: auto;
-    height: 36px;
+    height: 1vh;
 
     background: #F9FAFE;
 
@@ -1173,5 +1184,280 @@ progress[value]::-webkit-progress-bar {
 
     color: #000000;
 
+
+}
+
+/*Auth Pages*/
+
+.body_auth{
+    /* Auto layout */
+
+    height:97vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #F9FAFE;
+}
+
+.auth_card{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(112, 144, 176, 0.25);
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    margin: 1px 0px;
+}
+
+.auth_card_logo{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    width: 356px;
+    height: auto;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+
+    margin:10px 0px 0px 0px;
+
+}
+
+.auth_card_title{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    position: static;
+    width: 356px;
+    height: auto;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #2F2F2F;
+}
+
+.auth_card_inputs{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+
+    position: static;
+    width: 356px;
+    height: auto;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+}
+
+.auth_card_input{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 10px;
+
+    position: static;
+    width: 336px;
+    height: auto;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    margin: 10px 0px;
+}
+
+.auth_card_input_title{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 0px;
+
+    position: static;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #2F2F2F;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+
+}
+
+.auth_card_input_field{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 10px;
+
+    border: 1px solid #C7C7C7;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+
+    height: 30px;
+    
+}
+
+.auth_card_button{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    margin: 0px 0px 10px;    
+}
+
+.button_account_creation{
+    background: #7CDB62;
+    border-radius: 5px;
+    padding: 4px 10px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;    
+    color: #FFFFFF;
+    border-color: white;
+    border-style: unset;
+
+}
+
+.auth_remember{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+
+.auth_remember_checkbox{
+    /* Auto layout */
+
+    
+    flex: none;
+    order: 0;
+    margin: 0px 10px;
+}
+
+.auth_remember_text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #2F2F2F;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px ;
+}
+
+.notif_invalid{
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #FF5455;
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    margin: 10px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
 
 }

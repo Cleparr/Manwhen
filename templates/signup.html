@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">  
+        <title>{% block title %}Manwhat{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon_manwhen.png') }}">
+        <script  type="text/javascript" src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
+        
+
+    </head>
+    <body>
+        <div class="body_auth">
+            <div class="auth_card">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="notif_invalid">
+                            {{ messages[0] }}. 
+                            <a href="{{ url_for('login') }}" id = "notif_invalid_email">Se connecter.</a>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <form method="POST" action="/signup"> 
+                    <div class="auth_card_logo">
+                        <img src="{{url_for('static', filename='logo_manwhen.png')}}" alt="logo_manwhen">
+                    </div>
+
+                    <div class="auth_card_title">Créer son compte</div>
+
+                    <div class="auth_card_inputs">
+                        <div class="auth_card_input">
+                            <div class="auth_card_input_title">Adresse mail</div>
+
+                            <input class="auth_card_input_field" type="text" name="email" >
+
+                        </div>
+
+                        <div class="auth_card_input">
+                            <div class="auth_card_input_title">Mot de passe</div>
+
+                            <input class="auth_card_input_field"  type="password" name="password" >
+                            
+                        </div>
+
+                    </div>
+                    <div class="auth_card_button">
+                        <button class="button_account_creation" type="submit" name="form" value="ajout_user">Créer son compte</button>
+
+                    </div>
+                </form>            
+            
+            </div>
+
+        </div>
+
+        <div class ="body_footer"> Made in Lyon with ☕ </div>
+    </body>
+
+</html>
+
+        

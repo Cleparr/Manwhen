@@ -1,3 +1,4 @@
+![alt text](https://github.com/Cleparr/Manwhen/static/web_interface.png?raw=true)
 <img src="https://badgen.net/badge/python/3.10.2/blue">
 <img src="https://badgen.net/github/stars/Cleparr/Manwhen">
 
@@ -15,15 +16,16 @@ venv\scripts\activate
 
 *Dans l'environnement virtuel :*
 
-python -m pip install flask
+python -m pip install flask flask-sqlalchemy flask-login
 
 python -m pip install sqlalchemy
-
-python -m pip install flask-sqlalchemy
 
 python -m pip install requests
 
 python -m pip install tldextract
+
+python -m pip install python-dotenv
+
 
 ## To do List 
 
